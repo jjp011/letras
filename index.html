@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .flex-container {
+          display: flex;
+          flex-wrap: wrap;
+          background-color: DodgerBlue;
+        }
+        
+        .flex-container > div {
+          background-color: #f1f1f1;
+          width: 100px;
+          margin: 10px;
+          text-align: center;
+          line-height: 75px;
+          font-size: 50px;
+        }
+        </style>
+
+</head>
+<body>
+<div id="id_letras">
+    <div id="id_frase">
+        <label for="id_texto">Frase</label>
+        <input type="text" id="id_texto" name="input_texto" onchange="crearAcertijo()">
+    </div>
+    <div id="id_acertijo" class="flex-container">
+
+    </div>
+</div>
+<script type="text/javascript">
+    function crearAcertijo(){
+        let id_texto = document.getElementById("id_texto");
+        let id_acertijo = document.getElementById("id_acertijo");
+        console.log(id_texto.value);
+        id_acertijo.innerHTML = '';
+        if(id_texto.value.length <= 0){
+            id_acertijo.innerHTML="Escribe algo ....";
+        } else {
+            console.info(`${id_texto.value.length} : ${id_texto.value}`);
+            for(let c in id_texto.value){
+                //console.info(id_texto.value[c]);
+                let letra = id_texto.value[c];
+                let divAux = document.createElement('DIV');
+                if(letra.match(/[a-z]/i)){
+                    if(letra.match(/[aeiou]/i)){
+                        divAux.innerHTML = '?';
+                    } else {
+                        divAux.innerHTML = letra.toUpperCase();
+                    }
+                } else {
+                    divAux.innerHTML = '';
+                    divAux.style.backgroundColor = 'DodgerBlue';
+                }
+                id_acertijo.appendChild(divAux);
+            }
+        }
+    }
+</script>
+
+</body>
+
+
+</html>

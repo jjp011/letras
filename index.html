@@ -35,6 +35,13 @@
     </div>
 </div>
 <script type="text/javascript">
+    function toggleDisplay(elem){
+        if(elem.style.display == 'none'){
+            elem.style.display = '';
+        } else {
+            elem.style.display = 'none';
+        }
+    }
     function crearAcertijo(){
         let id_texto = document.getElementById("id_texto");
         let id_acertijo = document.getElementById("id_acertijo");
@@ -49,16 +56,34 @@
                 let letra = id_texto.value[c];
                 let divAux = document.createElement('DIV');
                 if(letra.match(/[a-z]/i)){
+                    console.info(letra);
                     if(letra.match(/[aeiou]/i)){
+                        console.info('   es vocal');
                         divAux.innerHTML = '?';
+                        id_acertijo.appendChild(divAux);
+                        // Añadir lista de letras
+                        let listaLetrasDiv = document.createElement('DIV');
+                        listaVocales = 'AEIOU';
+                        for (let v in listaVocales){
+                            let vocalDiv = document.createElement('DIV');
+                            vocalDiv.innerHTML = listaVocales[v];
+                            listaLetrasDiv.appendChild(vocalDiv);
+                        }
+                        id_acertijo.appendChild(listaLetrasDiv);
+                        listaLetrasDiv.style.display = 'none';
+                        divAux.addEventListener('click', function(){
+                            toggleDisplay(listaLetrasDiv);
+                        });
                     } else {
+                        console.info('   NO es vocal');
                         divAux.innerHTML = letra.toUpperCase();
+                        id_acertijo.appendChild(divAux);
                     }
                 } else {
                     divAux.innerHTML = '';
                     divAux.style.backgroundColor = 'DodgerBlue';
+                    id_acertijo.appendChild(divAux);
                 }
-                id_acertijo.appendChild(divAux);
             }
         }
     }

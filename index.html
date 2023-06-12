@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 <head>
     <style>
         .flex-container {
@@ -35,6 +37,12 @@
     </div>
 </div>
 <script type="text/javascript">
+    // When the user clicks on <div>, open the popup
+    function popUpToggle() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
+    
     function toggleDisplay(elem){
         if(elem.style.display == 'none'){
             elem.style.display = '';

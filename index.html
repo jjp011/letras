@@ -23,6 +23,22 @@
             padding: 10px;
             margin: 10px;
         }
+        
+        .popup .popuptext {
+            visibility: hidden;
+            width: 160px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -80px;
+        }
+
     </style>
 
 </head>
@@ -50,6 +66,9 @@
             elem.style.display = 'none';
         }
     }
+    
+    const listaVocales = 'AEIOU';
+    
     function crearAcertijo(){
         let id_texto = document.getElementById("id_texto");
         let id_acertijo = document.getElementById("id_acertijo");
@@ -71,11 +90,15 @@
                         id_acertijo.appendChild(divAux);
                         // Añadir lista de letras
                         let listaLetrasDiv = document.createElement('DIV');
-                        listaVocales = 'AEIOU';
+                        //TODO: Eliminar
+                        //listaVocales = 'AEIOU';
+                        let vocalesSpan = document.createElement('SPAN');
+                        vocalesSpan.classList.add('popuptext');
                         for (let v in listaVocales){
                             let vocalDiv = document.createElement('DIV');
                             vocalDiv.innerHTML = listaVocales[v];
                             listaLetrasDiv.appendChild(vocalDiv);
+                            vocalesSpan.appendChild(vocalDiv);
                         }
                         id_acertijo.appendChild(listaLetrasDiv);
                         listaLetrasDiv.style.display = 'none';

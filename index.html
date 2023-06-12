@@ -89,7 +89,7 @@
                         divAux.innerHTML = '?';
                         id_acertijo.appendChild(divAux);
                         // Añadir lista de letras
-                        let listaLetrasDiv = document.createElement('DIV');
+                        //let listaLetrasDiv = document.createElement('DIV');
                         //TODO: Eliminar
                         //listaVocales = 'AEIOU';
                         let vocalesSpan = document.createElement('SPAN');
@@ -97,15 +97,15 @@
                         for (let v in listaVocales){
                             let vocalDiv = document.createElement('DIV');
                             vocalDiv.innerHTML = listaVocales[v];
-                            listaLetrasDiv.appendChild(vocalDiv);
+                            //listaLetrasDiv.appendChild(vocalDiv);
                             vocalesSpan.appendChild(vocalDiv);
                         }
                         id_acertijo.appendChild(listaLetrasDiv);
-                        listaLetrasDiv.style.display = 'none';
-                        divAux.addEventListener('click', function(){
-                            toggleDisplay(listaLetrasDiv);
-                        });
+                        //listaLetrasDiv.style.display = 'none';
                         divAux.appendChild(vocalesSpan);
+                        divAux.addEventListener('click', function(){
+                            toggleDisplay(vocalesSpan);
+                        });
                         console.info('divAux:', divAux);
                     } else {
                         console.info('   NO es vocal');
